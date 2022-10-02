@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employment;
 use App\Models\Meet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -16,8 +17,9 @@ class MeetController extends Controller
      */
     public function index()
     {
+
         return view('meet', [
-            'data' => Meet::orderby('begin', 'asc')->get()
+            'data' => Meet::orderby('begin', 'asc')->get(),
         ]);
     }
 

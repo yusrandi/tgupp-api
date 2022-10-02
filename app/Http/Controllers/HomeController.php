@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employment;
+use App\Models\Meet;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $jabatan = count(Employment::all());
+        $pegawai = count(User::where('role_id', 2)->get());
+        $admin = count(User::where('role_id', 1)->get());
+        $rapat = count(Meet::all());
+
+        return view('home', [
+            'data' => Meet::orderby('begin', 'asc')->get(),
+            'jabatan' => $jabatan,
+            'pegawai' => $pegawai,
+            'admin' => $admin,
+            'rapat' => $rapat,
+
+        ]);
     }
 }

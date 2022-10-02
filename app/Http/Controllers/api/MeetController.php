@@ -50,4 +50,22 @@ class MeetController extends Controller
             'data' => $data,
         ], 201);
     }
+    public function meet($barcode)
+    {
+        $data = Meet::where('barcode', $barcode)->first();
+
+        if ($data) {
+            return response()->json([
+                'responsecode' => '1',
+                'responsemsg' => 'success',
+                'data' => $data,
+            ], 201);
+        } else {
+            return response()->json([
+                'responsecode' => '0',
+                'responsemsg' => 'failed',
+                'data' => new Meet(),
+            ], 201);
+        }
+    }
 }

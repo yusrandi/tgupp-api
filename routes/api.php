@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\MeetController;
+use App\Http\Controllers\api\MeetAttendanceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/schedule', [MeetController::class, 'schedule']);
 Route::get('/history', [MeetController::class, 'history']);
 Route::get('/attendance/{userid}', [MeetController::class, 'attendance']);
+Route::get('/meet/{barcode}', [MeetController::class, 'meet']);
+Route::post('/attendance', [MeetAttendanceController::class, 'store']);
