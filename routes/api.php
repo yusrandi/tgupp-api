@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\api\MeetController;
 use App\Http\Controllers\api\MeetAttendanceController;
+use App\Http\Controllers\api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,4 @@ Route::get('/history', [MeetController::class, 'history']);
 Route::get('/attendance/{userid}', [MeetController::class, 'attendance']);
 Route::get('/meet/{barcode}', [MeetController::class, 'meet']);
 Route::post('/attendance', [MeetAttendanceController::class, 'store']);
+Route::post('/login', [UserController::class, 'login']);
