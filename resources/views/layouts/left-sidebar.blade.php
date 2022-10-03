@@ -1,6 +1,6 @@
 <div class="left-side-bar">
     <div class="brand-logo">
-        <a href="index.html">
+        <a href="{{ route('home') }}">
             <img src="{{ asset('assets/vendors/images/deskapp-logo.svg') }}" alt="" class="dark-logo">
             <img src="{{ asset('assets/vendors/images/deskapp-logo-white.svg') }}" alt="" class="light-logo">
         </a>
@@ -11,14 +11,11 @@
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
             <ul id="accordion-menu">
-                <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+                <li >
+                    <a href="{{ route('home') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-house-1"></span><span class="mtext">Dashboard</span>
                     </a>
-                    <ul class="submenu">
-                        <li><a href="index.html">Dashboard style 1</a></li>
-                        <li><a href="index2.html">Dashboard style 2</a></li>
-                    </ul>
+                    
                 </li>
                 <li>
                     <a href="{{ route('employment') }}" class="dropdown-toggle no-arrow">

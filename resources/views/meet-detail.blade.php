@@ -41,7 +41,7 @@
                     </p>
 
                     <div class="font-14 ml-0">Tempat {{ $meet->place }}</div>
-                    <div class="font-14 ml-0">{{ $meet->salary }}</div>
+                    {{-- <div class="font-14 ml-0">{{ $meet->salary }}</div> --}}
                     
                 </div>
             </div>

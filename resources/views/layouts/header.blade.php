@@ -109,7 +109,7 @@
                     <span class="user-icon">
                         <img src="{{ asset('assets/vendors/images/photo1.jpg') }}" alt="">
                     </span>
-                    <span class="user-name">Use C. Lopez</span>
+                    <span class="user-name">{{ auth()->user()->fullname }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                     <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>

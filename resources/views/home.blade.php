@@ -131,7 +131,7 @@
 					</table>
 				</div>
 
-				<input type="datetime-local" class="form-control">
+				{{-- <input type="datetime-local" class="form-control"> --}}
 
 			</div>
 
