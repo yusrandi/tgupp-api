@@ -22,6 +22,11 @@
                         <span class="micon dw dw-building"></span><span class="mtext">Jabatan</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('title') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-building"></span><span class="mtext">Gelar</span>
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-user-11"></span><span class="mtext">Data Pengguna</span>

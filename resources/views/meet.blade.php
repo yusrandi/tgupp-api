@@ -11,7 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/src/plugins/datatables/css/responsive.bootstrap4.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/styles/style.css') }}"> --}}
 
-
+    <!-- switchery css -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/src/plugins/switchery/switchery.min.css') }}">
 
 @endsection
 
@@ -58,7 +59,6 @@
 									<th>Mulai Rapat</th>
 									<th>Akhir Rapat</th>
 									<th>Tempat</th>
-									<th>Salary</th>
 									<th>Status</th>
 									<th>Aksi</th>
 								</tr>
@@ -71,8 +71,11 @@
                                         <td>{{ $item->begin }}</td>
                                         <td>{{ $item->end }}</td>
                                         <td>{{ $item->place }}</td>
-                                        <td>{{ $item->salary }}</td>
-                                        <td>{{ $item->status }}</td>
+                                        <td>
+
+									    <input  type="checkbox" {{ $item->status == 1 ? 'checked' : '' }} {{ $item->status == 1 ? 'disabled' : '' }} class="switch-btn" data-color="#0099ff" data-id="{{ $item->id }}">
+                                            
+                                        </td>
                                         <td>
                                             <div class="dropdown">
                                                 <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -97,6 +100,8 @@
 					</div>
 				</div>
 				<!-- Checkbox select Datatable End -->
+
+                
     </div>
 
     <div class="modal fade bs-example-modal-lg" id="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -126,6 +131,11 @@
     @include('utils.toastr')
 
     @stack('script')
+
+    <!-- switchery js -->
+	<script src="{{ asset('assets/src/plugins/switchery/switchery.min.js') }}"></script>
+	{{-- <script src="{{ asset('assets/vendors/scripts/advanced-components.js') }}"></script> --}}
+
 
     <script>
         $(document).ready(function() {
@@ -158,12 +168,42 @@
                     confirmButtonText: 'Yes, delete it!'
                     }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location = "meet/delete/" + data;
+                        window.location = "meet/delete/";
                     }
                 });
       
       
             });
+
+            $('.switch-btn').each(function() {
+			    new Switchery($(this)[0], $(this).data());
+		    });
+
+            $('.switch-btn').change(function() {
+
+                var data = $(this).attr("data-id");
+                var isChecked = $(this).is(":checked");
+
+                Swal.fire({
+                    title: 'Are you sure ?',
+                    text: "apakah rapat telah selesai ? "+data,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, selesai!',
+                    cancelButtonText:'belum'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = "meet/status/" + data;
+                    }else{
+                        window.location = "meet";
+
+
+                    }
+                });
+		    });
+
             
         });
     </script>

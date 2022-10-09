@@ -17,6 +17,7 @@ class CreateMeetAttendancesTable extends Migration
             $table->id();
             $table->string('time');
             $table->string('status')->default('hadir');
+            $table->string('location')->nullable();
 
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();

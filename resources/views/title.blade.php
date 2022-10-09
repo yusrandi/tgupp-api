@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'Jabatan')
+@section('title', 'Gelar')
 
 @section('css')
     <!-- CSS Files -->
@@ -14,22 +14,20 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <div class="title">
-                            <h4>Data Jabatan</h4>
+                            <h4>Data Gelar</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Data Jabatan</li>
+                                <li class="breadcrumb-item active" aria-current="page">Data Gelar</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
             </div>
-            @livewire('employment')
+            @livewire('wire-title')
         
-        <div class="footer-wrap pd-20 mb-20 card-box">
-            DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
-        </div>
+       @include('layouts.footer')
     </div>
 </div>
 @endsection

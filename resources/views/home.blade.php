@@ -11,6 +11,10 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>  
 
+  <!-- switchery css -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/src/plugins/switchery/switchery.min.css') }}">
+
+
 @endsection
 
 @section('breadcrumb')
@@ -90,7 +94,7 @@
 			
 			<div class="card-box mb-30 pd-20">
 				<div class="pull-left">
-					<h4 class="text-blue h4">Tabel Rapat</h4>
+					<h4 class="text-blue h4">Tabel Rapat </h4>
 					<p class="mb-30">Data semua jadwal rapat</p>
 				</div>
 				<div class="pull-right">
@@ -106,7 +110,7 @@
 								<th>Mulai Rapat</th>
 								<th>Akhir Rapat</th>
 								<th>Tempat</th>
-								<th>Salary</th>
+								<th>Status</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -118,10 +122,13 @@
 									<td>{{ $item->begin }}</td>
 									<td>{{ $item->end }}</td>
 									<td>{{ $item->place }}</td>
-									<td>{{ $item->salary }}</td>
 									<td>
-										<a class="dropdown-item" href="{{ route('meet.show', $item) }}" ><i class="dw dw-eye"></i> View</a>
-
+									    <input  type="checkbox" {{ $item->status == 1 ? 'checked' : '' }} {{ $item->status == 1 ? 'disabled' : '' }} class="switch-btn" data-color="#0099ff" data-id="{{ $item->id }}">
+									</td>
+									<td>
+										@if ($item->status == 0)
+											<a class="dropdown-item" href="{{ route('meet.show', $item) }}" ><i class="dw dw-eye"></i> View</a>
+										@endif
 									</td>
 									
 								</tr>
@@ -142,6 +149,10 @@
 @endsection
 
 @section('js')
+
+<!-- switchery js -->
+<script src="{{ asset('assets/src/plugins/switchery/switchery.min.js') }}"></script>
+
 <script type="text/javascript">
 
     $('.timepicker').datetimepicker({
@@ -151,4 +162,36 @@
     }); 
 
 </script> 
+
+<script>
+	
+	$('.switch-btn').each(function() {
+			    new Switchery($(this)[0], $(this).data());
+		    });
+
+            $('.switch-btn').change(function() {
+
+                var data = $(this).attr("data-id");
+                var isChecked = $(this).is(":checked");
+
+                Swal.fire({
+                    title: 'Are you sure ?',
+                    text: "apakah rapat telah selesai ? ",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, selesai!',
+                    cancelButtonText:'belum'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = "meet/status/" + data;
+                    }else{
+                        window.location = "home";
+
+
+                    }
+                });
+		    });
+</script>
 @endsection

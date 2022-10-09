@@ -12,6 +12,18 @@
                         @enderror
                     </div>
                     <div class="form-group ">
+                        <label >level Gelar</label>
+                        <select class="custom-select col-12" wire:model="title_id">
+                            <option selected="">Choose...</option>
+                            @foreach ($titles as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('title_id')
+                          <small class="mt-2 text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group ">
                         <label >level Jabatan</label>
                         <select class="custom-select col-12" wire:model="employment_id">
                             <option selected="">Choose...</option>

@@ -15,9 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(
             [
+                TitleTableSeeder::class,
                 RolesTableSeeder::class,
                 EmploymentsTableSeeder::class,
-                UsersTableSeeder::class
+                UsersTableSeeder::class,
             ]
         );
     }

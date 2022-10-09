@@ -53,7 +53,6 @@ class MeetController extends Controller
             'begin' => 'required|max:255',
             'end' => 'required|max:255',
             'place' => 'required|max:255',
-            'salary' => 'required',
             'barcode' => 'required',
         ]);
         $save = Meet::create($data);
@@ -72,6 +71,14 @@ class MeetController extends Controller
         return view('meet-detail', [
             'meet' => $meet
         ]);
+    }
+    public function updateStatus($id)
+    {
+        $data = Meet::findOrFail($id);
+        $update = $data->update(['status' => 1]);
+        $update ? Session::flash('message', "Update Status Successfully") : Session::flash('error', "Update Status Failed");
+
+        return redirect()->route('meet.index');
     }
 
     /**
@@ -103,7 +110,6 @@ class MeetController extends Controller
             'begin' => 'required|max:255',
             'end' => 'required|max:255',
             'place' => 'required|max:255',
-            'salary' => 'required',
             'barcode' => 'required',
         ]);
         $update = $meet->update($data);

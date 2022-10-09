@@ -74,14 +74,7 @@
                                 @enderror
                             </div>
         
-                            <div class="form-group">
-                                <label>Salary Jabatan</label>
-                                <input class="form-control input-currency" type="text" type-currency="IDR" placeholder="Rp" name="salary" value="{{ $meet->salary }}">
-                                @error('salary')
-                                    <small class="mt-2 text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-
+                            
                             <input class="form-control " type="text" name="barcode" value="{{ $id }}" name="barcode" hidden>
 
 

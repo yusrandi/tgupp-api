@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Employment;
 use App\Models\Role;
+use App\Models\Title;
 use App\Models\User;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -16,7 +17,7 @@ class WireUserForm extends Component
     use WithFileUploads;
     use LivewireAlert;
 
-    public $image, $fullname, $employment_id, $role_id, $email, $password, $user;
+    public $image, $fullname, $title_id, $employment_id, $role_id, $email, $password, $user;
     public $selectedItemId;
 
     public function mount($user = null)
@@ -25,6 +26,7 @@ class WireUserForm extends Component
             $this->user = $user;
             $this->selectedItemId = $user->id;
             $this->fullname = $user->fullname;
+            $this->title_id = $user->title_id;
             $this->employment_id = $user->employment_id;
             $this->role_id = $user->role_id;
             $this->email = $user->email;
@@ -34,7 +36,8 @@ class WireUserForm extends Component
     {
         return view('livewire.wire-user-form', [
             'employments' => Employment::orderby('name')->get(),
-            'roles' => Role::orderby('name')->get()
+            'roles' => Role::orderby('name')->get(),
+            'titles' => Title::orderby('name')->get()
         ]);
     }
 
@@ -51,6 +54,7 @@ class WireUserForm extends Component
             'password' => 'required|max:255',
             'role_id' => 'required',
             'employment_id' => 'required',
+            'title_id' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -73,6 +77,7 @@ class WireUserForm extends Component
             'fullname' => 'required|max:255',
             'role_id' => 'required',
             'employment_id' => 'required',
+            'title_id' => 'required',
         ]);
 
         $data = $this->validate($validateData);
@@ -100,6 +105,7 @@ class WireUserForm extends Component
         $this->password = null;
         $this->employment_id = null;
         $this->role_id = null;
+        $this->title_id = null;
         $this->image = null;
     }
 

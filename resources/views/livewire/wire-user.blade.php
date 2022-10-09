@@ -14,6 +14,7 @@
                     <th>Foto Pengguna</th>
                     <th>Nama Lengkap</th>
                     <th>Email Pengguna</th>
+                    <th>Gelar</th>
                     <th>Jabatan</th>
                     <th>Hak Akses</th>
                     <th class="datatable-nosort text-right">Action</th>
@@ -33,6 +34,7 @@
                      </td>
                     <td>{{ $item->fullname }}</td>
                     <td>{{ $item->email }}</td>
+                    <td>{{ $item->title->name }}</td>
                     <td>{{ $item->employment->name }}</td>
                     <td>{{ $item->role->name }}</td>
                     
