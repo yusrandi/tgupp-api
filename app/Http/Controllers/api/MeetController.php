@@ -30,7 +30,7 @@ class MeetController extends Controller
         $today = date('Y/m/d');
 
         $data = Meet::with(['meetResults', 'meetAttendances'])
-            ->where('begin', '<=', $today)->get();
+            ->where('status', 1)->get();
 
         return response()->json([
             'responsecode' => '1',
@@ -42,7 +42,11 @@ class MeetController extends Controller
     public function attendance($userid)
     {
         $data = MeetAttendance::with(['user', 'meet'])
-            ->where('user_id', $userid)->get();
+            ->where('user_id', $userid)
+            ->whereHas('meet', function ($q) {
+                $q->where('status', 1);
+            })
+            ->get();
 
         return response()->json([
             'responsecode' => '1',

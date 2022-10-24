@@ -17,7 +17,7 @@ class EmploymentsTableSeeder extends Seeder
 
         Employment::create([
             'name' => 'Admin',
-            'salary' => '1000000',
+            'salary' => 'Rp 10.000.000',
         ]);
     }
 }

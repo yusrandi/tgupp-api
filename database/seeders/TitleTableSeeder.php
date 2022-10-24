@@ -16,7 +16,7 @@ class TitleTableSeeder extends Seeder
     {
         Title::create([
             'name' => 'S1',
-            'salary' => '1000000',
+            'salary' => 'Rp 10.000.000',
         ]);
     }
 }

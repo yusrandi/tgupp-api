@@ -16,7 +16,8 @@ class UserController extends Controller
         $password = $request->password;
         $email = $request->email;
 
-        $login = User::where(['email' => $email, 'role_id' => 2])
+        $login = User::with('title')
+            ->where(['email' => $email, 'role_id' => 2])
             // ->where('hak_akses', '!=', 1)
             // ->orwhere('hak_akses', 3)
             ->first();
@@ -29,6 +30,12 @@ class UserController extends Controller
             ], 201);
         } else {
             if ($hasher->check($password, $login->password)) {
+
+                $update = User::find($login->id)->update([
+                    'remember_token' => $request->token,
+                    // 'email_verified_at' => $request->token,
+                ]);
+
                 return response()->json([
                     'responsecode' => '1',
                     'responsemsg' => 'Selamat datang',

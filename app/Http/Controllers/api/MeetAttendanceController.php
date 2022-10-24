@@ -32,6 +32,7 @@ class MeetAttendanceController extends Controller
                 'time' => $today,
                 'meet_id' => $request->meet_id,
                 'user_id' => $request->user_id,
+                'location' => $request->location,
             ]);
 
             return response()->json([

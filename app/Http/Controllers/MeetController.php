@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employment;
 use App\Models\Meet;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -55,6 +56,11 @@ class MeetController extends Controller
             'place' => 'required|max:255',
             'barcode' => 'required',
         ]);
+        $users = User::all();
+        foreach ($users as $key => $value) {
+            $this->sendFCM($value->remember_token, "TGUPP Mobile", "Kegiatan rapat baru " . $data['name'] . " pada " . $data['begin']);
+        }
+
         $save = Meet::create($data);
         $save ? Session::flash('message', "Created Data Successfully") : Session::flash('error', "Created Data Failed");
         return redirect()->route('meet.index');
@@ -142,5 +148,64 @@ class MeetController extends Controller
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    public function sendFCM($token, $title, $body)
+    {
+        $SERVER_API_KEY = "AAAAXIxpSbY:APA91bEQ__NawWw36uFJA5BakyFdXYAEoolgzrIPhsfFhF0PzH978EY-FDYGE6Qbqaoqcs3LRRuwjIHX2-LCRwQMKYloWMqPYxhtRxV9E4OH9cR-tjivKq9FdXTpjx9vYtlwwRtQ4suX";
+
+        // $token = [];
+        // $dataUser = User::where('hak_akses', '2')->get();
+        // foreach ($dataUser as $key => $value) {
+        //     $token[$key] = $value->remember_token;
+        // }
+
+        // dd($token);
+
+        $data = [
+
+            "registration_ids" =>
+            [$token],
+
+
+            "notification" => [
+
+                "title" => $title,
+
+                "body" => $body,
+
+                "sound" => "default" // required for sound on ios
+
+            ],
+
+        ];
+
+        $dataString = json_encode($data);
+
+        $headers = [
+
+            'Authorization: key=' . $SERVER_API_KEY,
+
+            'Content-Type: application/json',
+
+        ];
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+
+        curl_setopt($ch, CURLOPT_POST, true);
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
+
+        $response = curl_exec($ch);
+
+        // dd($response);
     }
 }
