@@ -27,3 +27,4 @@ Route::get('/attendance/{userid}', [MeetController::class, 'attendance']);
 Route::get('/meet/{barcode}', [MeetController::class, 'meet']);
 Route::post('/attendance', [MeetAttendanceController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
+Route::get('/profile/{id}', [UserController::class, 'profile']);

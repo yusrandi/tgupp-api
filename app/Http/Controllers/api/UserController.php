@@ -50,4 +50,14 @@ class UserController extends Controller
             }
         }
     }
+
+    public function profile($id)
+    {
+        $user = User::with('title')->find($id);
+        return response()->json([
+            'responsecode' => '1',
+            'responsemsg' => 'Selamat datang',
+            'user' => $user
+        ], 201);
+    }
 }
