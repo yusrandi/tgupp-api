@@ -29,7 +29,7 @@
 
             <div class="row">
                 <!-- Bootstrap Switchery Start -->
-                <div class="col-md-8 col-sm-12 mb-30">
+                <div class="col-md-12 col-sm-12 mb-30">
                     <div class="pd-20 card-box height-100-p">
                         <div class="clearfix mb-30">
                             <div class="pull-left">
@@ -67,7 +67,7 @@
                 </div>
                 <!-- Bootstrap Switchery End -->
                 <!-- Bootstrap Tags Input Start -->
-                <div class="col-md-4 col-sm-12 mb-30">
+                {{-- <div class="col-md-4 col-sm-12 mb-30">
                     <div class="pd-20 card-box height-100-p">
                         <div class="clearfix mb-30">
                             <div class="pull-left">
@@ -106,7 +106,7 @@
                            
                         </form>
                     </div>
-                </div>
+                </div> --}}
                 <!-- Bootstrap Tags Input End -->
             </div>
             {{-- @livewire('wire-meet-form', ['meet' => $meet]) --}}

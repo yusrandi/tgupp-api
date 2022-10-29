@@ -81,12 +81,13 @@
                                                 <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                                     <i class="dw dw-more"></i>
                                                 </a>
+
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                                     <a class="dropdown-item" href="{{ route('meet.show', $item) }}" ><i class="dw dw-eye"></i> View</a>
+                                                    <a class="dropdown-item" href="{{ route('meet-attendance.index', $item) }}" ><i class="dw dw-agenda1"></i> Peserta Rapat</a>
 
                                                     @if ($item->status != 1)
                                                         <a class="dropdown-item" href="{{ route('meet-result.index', $item) }}" ><i class="dw dw-list"></i> Hasil Rapat</a>
-                                                        <a class="dropdown-item" href="{{ route('meet-attendance.index', $item) }}" ><i class="dw dw-agenda1"></i> Peserta Rapat</a>
                                                         <a class="dropdown-item" href="{{ route('meet.edit', $item) }}"><i class="dw dw-edit2"></i> Edit</a>
                                                     @endif
                                                     
