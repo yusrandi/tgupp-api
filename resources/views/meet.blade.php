@@ -90,7 +90,7 @@
                                                         <a class="dropdown-item" href="{{ route('meet-result.index', $item) }}" ><i class="dw dw-list"></i> Hasil Rapat</a>
                                                         <a class="dropdown-item" href="{{ route('meet.edit', $item) }}"><i class="dw dw-edit2"></i> Edit</a>
                                                     @endif
-                                                    
+                    
 
                                                     <a class="dropdown-item delete" id="delete" href="#" data-id="{{ $item->id }}"><i class="dw dw-delete-3"></i> Delete</a>
                                                 </div>
@@ -146,8 +146,9 @@
         $(document).ready(function() {
             $('.delete').click(function() {
 
-                // alert('hahahha');
                 var data = $(this).attr('data-id');
+                // alert(data);
+                console.log(data);
                 // swal({
                 //         title: "Anda yakin?",
                 //         text: "Anda akan menghapus data ini!",
@@ -173,7 +174,7 @@
                     confirmButtonText: 'Yes, delete it!'
                     }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location = "meet/delete/";
+                        window.location = "meet/delete/"+data;
                     }
                 });
       

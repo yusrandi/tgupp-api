@@ -16,7 +16,9 @@ class MeetController extends Controller
         $today = date('Y/m/d');
 
         $data = Meet::with(['meetResults', 'meetAttendances'])
-            ->where('begin', '>=', $today)->get();
+            // ->where('begin', '>=', $today)
+            ->where('status', 0)
+            ->get();
 
         return response()->json([
             'responsecode' => '1',

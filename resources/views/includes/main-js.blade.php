@@ -41,45 +41,6 @@
 });
 </script>
 
-<script type="text/javascript">
-  $(function() {
-
-
-      $('.delete').click(function() {
-          var data = $(this).attr('data-id');
-          // swal({
-          //         title: "Anda yakin?",
-          //         text: "Anda akan menghapus data ini!",
-          //         icon: "warning",
-          //         buttons: true,
-          //         dangerMode: true,
-          //     })
-          //     .then((willDelete) => {
-          //         if (willDelete) {
-          //             // window.location = "penyakits/delete/" + data;
-          //         } else {
-          //             swal("Your data is safe!");
-          //         }
-          //     });
-
-  
-
-      });
-
-      // $(".datetimepicker").datepicker({
-      //               timepicker:!0,
-      //               startDate: new Date(),
-      //               language:"en",
-      //               autoClose:!0,
-      //               dateFormat:"dd/mm/yyyy"
-
-      //       }).on('dp.change', function (e) {  
-      //           // alert('hahhahaha');
-      //           console.log(e);
-      //       });
-      
-  });
-</script>
 
 
 @yield('js')
