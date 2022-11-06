@@ -12,15 +12,15 @@
                     <small class="mt-2 text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            
-            <div class="form-group">
+
+            {{-- <div class="form-group">
                 <label>Salary Jabatan</label>
                 <input wire:model="salary" class="form-control input-currency" type="text" type-currency="IDR" placeholder="Rp" name="salary">
                 @error('salary')
                     <small class="mt-2 text-danger">{{ $message }}</small>
                 @enderror
-            </div>
-            
+            </div> --}}
+
         </form>
     </div>
     <div class="modal-footer">

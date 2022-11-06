@@ -13,12 +13,12 @@ class EmploymentForm extends Component
 
     protected $rules = [
         'name' => 'required',
-        'salary' => 'required',
+        // 'salary' => 'required',
 
     ];
     protected $messages = [
         'name.required' => 'this field is required',
-        'salary.required' => 'this field is required',
+        // 'salary.required' => 'this field is required',
 
     ];
 
@@ -43,6 +43,7 @@ class EmploymentForm extends Component
     public function save()
     {
         $data = $this->validate();
+        $data['salary'] = '1000000';
 
         $this->selectedItemId ? Employment::find($this->selectedItemId)->update($data)
             : Employment::create($data);
