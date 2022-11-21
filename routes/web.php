@@ -4,6 +4,7 @@ use App\Http\Controllers\EmploymentController;
 use App\Http\Controllers\MeetAttendanceController;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\MeetResultController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -25,4 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('meet-result', [MeetResultController::class, 'store'])->name('meet-result.store');
     Route::get('meet-attendance/{meet}', [MeetAttendanceController::class, 'index'])->name('meet-attendance.index');
     Route::post('meet-attendance', [MeetAttendanceController::class, 'store'])->name('meet-attendance.store');
+    Route::get('report-honor', [ReportController::class, 'reportHonor']);
+    Route::get('report-meet', [ReportController::class, 'reportMeet']);
+    Route::post('report-honor', [ReportController::class, 'filterReportHonor']);
+    Route::post('report-meet', [ReportController::class, 'filterReportMeet']);
 });

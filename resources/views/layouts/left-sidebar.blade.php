@@ -11,11 +11,11 @@
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
             <ul id="accordion-menu">
-                <li >
+                <li>
                     <a href="{{ route('home') }}" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-house-1"></span><span class="mtext">Dashboard</span>
                     </a>
-                    
+
                 </li>
                 <li>
                     <a href="{{ route('employment') }}" class="dropdown-toggle no-arrow">
@@ -45,7 +45,23 @@
                         <li><a href="{{ route('meet.create') }}">Tambah Rapat</a></li>
                     </ul>
                 </li>
-                
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-library"></span><span class="mtext">Data Laporan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{{ url('report-honor') }}">Tabel Laporan Honor</a></li>
+                        <li><a href="{{ url('report-meet') }}">Tabel Laporan Rapat</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    {{-- <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-library"></span><span class="mtext">Laporan</span>
+                    </a> --}}
+
+                </li>
+
+
             </ul>
         </div>
     </div>

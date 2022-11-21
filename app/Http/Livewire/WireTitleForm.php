@@ -44,6 +44,9 @@ class WireTitleForm extends Component
     public function save()
     {
         $data = $this->validate();
+        $data['salary'] = preg_replace('/\D/', '', $data['salary']);
+
+        // dd($data);
 
         $this->selectedItemId ? Title::find($this->selectedItemId)->update($data)
             : Title::create($data);

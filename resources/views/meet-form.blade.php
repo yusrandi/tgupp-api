@@ -8,13 +8,13 @@
 
 
 @section('content')
-<div class="main-container">
+    <div class="main-container">
         <div class="min-height-200px">
             <div class="page-header">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <div class="title">
-                            <h4>Form Rapat</h4>
+                            <h4>Form Rapat </h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -36,46 +36,52 @@
                                 <h4 class="text-blue h4">Form Rapat </h4>
                             </div>
                         </div>
-                        <form action="{{ $status == 'edit' ? route('meet.update', $meet) : route('meet.store') }}" method="POST">
+                        <form action="{{ $status == 'edit' ? route('meet.update', $meet) : route('meet.store') }}"
+                            method="POST">
                             @csrf
 
                             @if ($status == 'edit')
-                                @method('PUT')                            
+                                @method('PUT')
                             @endif
 
                             <div class="form-group">
                                 <label>Nama Rapat</label>
-                                <input name="name" class="form-control" type="text" placeholder="Johnny Brown" value="{{ $meet->name }}">
+                                <input name="name" class="form-control" type="text" placeholder="Johnny Brown"
+                                    value="{{ $meet->name }}">
                                 @error('name')
-                                  <small class="mt-2 text-danger">{{ $message }}</small>
+                                    <small class="mt-2 text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-        
+
                             <div class="form-group">
                                 <label>Waktu mulai </label>
-                                <input name="begin" class="form-control datetimepicker" placeholder="waktu rapat dimulai" type="text" value="{{ $meet->begin }}">
+                                <input name="begin" class="form-control datetimepicker" placeholder="waktu rapat dimulai"
+                                    type="text" value="{{ $meet->begin }}">
                                 @error('begin')
-                                  <small class="mt-2 text-danger">{{ $message }}</small>
+                                    <small class="mt-2 text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label>Waktu berkahir </label>
-                                <input name="end" class="form-control datetimepicker" placeholder="waktu rapat berakhir" type="text" value="{{ $meet->end }}">
+                                <input name="end" class="form-control datetimepicker" placeholder="waktu rapat berakhir"
+                                    type="text" value="{{ $meet->end }}">
                                 @error('end')
-                                  <small class="mt-2 text-danger">{{ $message }}</small>
+                                    <small class="mt-2 text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
 
                             <div class="form-group">
                                 <label>Tempat Rapat</label>
-                                <input name="place" class="form-control" type="text" placeholder="alun-alun etc." value="{{ $meet->place }}">
+                                <input name="place" class="form-control" type="text" placeholder="alun-alun etc."
+                                    value="{{ $meet->place }}">
                                 @error('place')
-                                  <small class="mt-2 text-danger">{{ $message }}</small>
+                                    <small class="mt-2 text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-        
-                            
-                            <input class="form-control " type="text" name="barcode" value="{{ $id }}" name="barcode" hidden>
+
+
+                            <input class="form-control " type="text" name="barcode" value="{{ $id }}"
+                                name="barcode" hidden>
 
 
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -92,32 +98,32 @@
                                 <h4 class="text-blue h4">Rapat QRcode</h4>
                             </div>
                         </div>
-                       
+
                         <p class="text-center">
-                        
+
                             {{-- {!!  DNS2D::getBarcodeHTML($id, 'QRCODE') !!} --}}
                             {!! QrCode::size(350)->generate($id) !!}
                             {{-- {{ $id }} --}}
 
-                            
+
                         </p>
 
-                        
-                       
+
+
                     </div>
                 </div>
                 <!-- Bootstrap Tags Input End -->
             </div>
             {{-- @livewire('wire-meet-form', ['meet' => $meet]) --}}
-        
+
+        </div>
     </div>
-</div>
 @endsection
 
 @section('js')
 
     @include('utils.toastr')
-   
+
     <script>
         $(document).ready(function() {
             // $(".datetimepicker").datepicker({
@@ -133,8 +139,8 @@
             // });
         });
     </script>
-    
+
     @stack('script')
 
-    
+
 @endsection
