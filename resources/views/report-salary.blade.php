@@ -71,10 +71,18 @@
                     <table class="table stripe hover nowrap" id="example">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Fullname</th>
-                                <th>Gelar</th>
-                                <th>Honor</th>
+                                <th rowspan="2" class="text-center">#</th>
+                                <th rowspan="2" class="text-center">NAMA LENGKAP</th>
+                                <th rowspan="2" class="text-center">JABATAN</th>
+                                <th rowspan="2" class="text-center">PENDIDIKAN</th>
+                                <th colspan="3" class="text-center">JUMLAH YG DITERIMA</th>
+                                <th rowspan="2" class="text-center">TANDA TANGAN</th>
+                            </tr>
+                            <tr>
+
+                                <th class="text-center">NOMINAL</th>
+                                <th  class="text-center">JUM. KEG.</th>
+                                <th class="text-center">JUMLAH</th>
 
                             </tr>
                         </thead>
@@ -83,8 +91,12 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item['fullname'] }}</td>
-                                    <td>{{ $item['title'] }}</td>
-                                    <td>Rp. {{ number_format($item['salary']) }}</td>
+                                    <td class="text-center">{{ $item['jabatan'] }}</td>
+                                    <td class="text-center">{{ $item['title'] }}</td>
+                                    <td class="text-right">{{ number_format($item['nominal']) }}</td>
+                                    <td class="text-center">X {{ $item['qty'] }}</td>
+                                    <td class="text-right">{{ number_format($item['salary']) }}</td>
+                                    <td></td>
                                 </tr>
                             @endforeach
 

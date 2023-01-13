@@ -12,7 +12,7 @@ class MeetAttendance extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class)->with('title');
+        return $this->belongsTo(User::class)->with(['title','employment']);
     }
     public function meet()
     {

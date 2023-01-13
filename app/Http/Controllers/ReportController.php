@@ -16,6 +16,7 @@ class ReportController extends Controller
 
     public function reportHonor()
     {
+        // return $this->resultDataHonor(null);
 
         return view('report-salary', [
             'data' => $this->resultDataHonor(null)
@@ -46,6 +47,7 @@ class ReportController extends Controller
 
         ]);
     }
+    
     public function filterReportMeet(Request $request)
     {
         if ($request->submitbutton == 'filter') {
@@ -100,18 +102,23 @@ class ReportController extends Controller
             // echo $key;
             // echo "\r\n";
             $salary = 0;
+            $kegiatan = 0;
             foreach ($value as $keyValue => $valueValue) {
 
                 // echo $valueValue->user->title->salary;
 
                 $salary += (int) $valueValue->user->title->salary;
+                $kegiatan ++;
                 // echo "\r\n";
             }
             // echo $salary . ',' . $value->first()->user->fullname . ',' . $value->first()->user->title->name;
             $dataCollect->add([
                 'salary' => $salary,
+                'qty' => $kegiatan,
                 'fullname' => $value->first()->user->fullname,
-                'title' => $value->first()->user->title->name
+                'title' => $value->first()->user->title->name,
+                'jabatan' => $value->first()->user->employment->name,
+                'nominal' => $value->first()->user->title->salary
             ]);
 
             // echo "\r\n";

@@ -15,7 +15,7 @@ class HonorsExport implements Fromview, ShouldAutoSize, WithEvents
     public function __construct($resultData)
     {
         $this->resultData = $resultData;
-        $this->rows = count($resultData) + 2;
+        $this->rows = count($resultData) + 5;
     }
 
     public function view(): View
@@ -34,7 +34,7 @@ class HonorsExport implements Fromview, ShouldAutoSize, WithEvents
         return [
             AfterSheet::class    => function (AfterSheet $event) {
                 // $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
-                $event->sheet->getStyle('A1:D2')->applyFromArray(
+                $event->sheet->getStyle('A4:H5')->applyFromArray(
                     [
                         'font' => [
                             'bold' => true
@@ -47,7 +47,7 @@ class HonorsExport implements Fromview, ShouldAutoSize, WithEvents
                         ]
                     ]
                 );
-                $event->sheet->getStyle('A3:D' . $this->rows)->applyFromArray(
+                $event->sheet->getStyle('A5:H' . $this->rows)->applyFromArray(
                     [
                         'borders' => [
                             'allBorders' => [

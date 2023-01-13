@@ -88,9 +88,9 @@
                                     <td>{{ $item->begin }}</td>
                                     <td>{{ $item->end }}</td>
                                     <td>{{ $item->place }}</td>
-                                    <td>{{ $item->meetResults->first()->leader }}</td>
-                                    <td>{{ $item->meetResults->first()->notulen }}</td>
-                                    <td>{{ $item->meetAttendances->count() . ' Orang' }}</td>
+                                    <td>{{ $item->meetResults->isEmpty() ? '-' : $item->meetResults->first()->leader }}</td>
+                                    <td>{{ $item->meetResults->isEmpty() ? '-' : $item->meetResults->first()->notulen }}</td>
+                                    <td>{{ $item->meetAttendances->isEmpty() ? '-' : $item->meetAttendances->count() . ' Orang' }}</td>
 
 
                                 </tr>

@@ -20,7 +20,7 @@ class MeetAttendanceController extends Controller
         // $today = date('l, j F Y ; h:i a');
         $today = date('Y/m/d H:i a', strtotime("-20 days"));
 
-        return $today;
+        // return $today;
 
         $checkAttendance = MeetAttendance::where(['meet_id' => $request->meet_id, 'user_id' => $request->user_id])->first();
 
